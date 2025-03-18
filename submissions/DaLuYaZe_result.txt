@@ -1,0 +1,5 @@
+Start Time:1742317521.98736
+2025-03-18_17-05-22: Playmobil detected, stopping for 5s
+Obstacle detected, stopping
+End Time: 1742317527.7622654
+Total Turns:0
