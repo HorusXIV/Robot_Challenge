@@ -1,0 +1,27 @@
+Run started: 2025-03-18 17:39:24
+2025-03-18_17-39-281th turn taken.
+2025-03-18_17-39-31Playmobil detected
+2025-03-18_17-39-39Playmobil detected
+2025-03-18_17-39-462th turn taken.
+2025-03-18_17-39-53Playmobil detected
+2025-03-18_17-39-593th turn taken.
+2025-03-18_17-40-01Playmobil detected
+2025-03-18_17-40-08Playmobil detected
+2025-03-18_17-40-16Playmobil detected
+2025-03-18_17-40-214th turn taken.
+2025-03-18_17-40-24Playmobil detected
+2025-03-18_17-40-31Playmobil detected
+2025-03-18_17-40-365th turn taken.
+2025-03-18_17-40-39Playmobil detected
+2025-03-18_17-40-476th turn taken.
+2025-03-18_17-40-50Playmobil detected
+2025-03-18_17-40-557th turn taken.
+2025-03-18_17-40-58Playmobil detected
+2025-03-18_17-41-038th turn taken.
+2025-03-18_17-41-09Playmobil detected
+2025-03-18_17-41-149th turn taken.
+2025-03-18_17-41-20Playmobil detected
+Run ended: 2025-03-18 17:41:25
+Total runtime:120.62988710403442 seconds
+Total turns:9
+Playmobil figures detected:13
