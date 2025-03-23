@@ -1,5 +1,6 @@
-Run started: 2025-03-23 12:47:22
-Run ended: 2025-03-23 12:47:35
-Total runtime:12.721987009048462 seconds
-Total turns:4
-Playmobil figures detected:0
+Run started: 2025-03-23 12:47:57
+2025-03-23_12-48-31Playmobil detected
+2025-03-23_12-48-42Playmobil detected
+2025-03-23_12-48-50Playmobil detected
+2025-03-23_12-48-55Cone detected
+2025-03-23_12-49-12Playmobil detected
