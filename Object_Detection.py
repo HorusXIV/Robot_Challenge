@@ -1,62 +1,114 @@
 import cv2
 import numpy as np
 import time
+import os
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 
-# Initialize PiCamera
+# --- Setup Camera ---
 camera = PiCamera()
 camera.rotation = 180
-camera.resolution = (320, 240)  # Lower resolution for better performance
+camera.resolution = (320, 240)
 camera.framerate = 30
 raw_capture = PiRGBArray(camera, size=(320, 240))
 
-# Allow camera to warm up
-time.sleep(2)
+# --- Timing & Logging ---
+image_dir = "/home/pi/Dashboard/user/RobotChallenge/My_Projects/Jupyter/zumi_images/"
+os.makedirs(image_dir, exist_ok=True)
 
-def detect_vertical_objects(frame):
-    # Convert to grayscale
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    
-    # Apply Gaussian blur
-    blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-    
-    # Apply Canny edge detection (Optimized thresholds)
-    low_threshold = 20
-    high_threshold = 120
-    edges = cv2.Canny(blurred, low_threshold, high_threshold)
-    
-    # Apply morphological operations to enhance edges
-    kernel = np.ones((3, 3), np.uint8)  # Kernel for dilation
-    dilated_edges = cv2.dilate(edges, kernel, iterations=1)
+# --- Detection Function ---
+def detect_playmobil(frame, debug_dir=None):
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    result_image = frame.copy()
+    result = {"figure": False, "cone": False}
 
-    # Detect vertical lines using Hough Transform
-    lines = cv2.HoughLinesP(dilated_edges, 1, np.pi/180, 50, minLineLength=50, maxLineGap=5)
+    # === FIGURE DETECTION ===
+    color_ranges_figure = [
+        (np.array([20, 100, 100]), np.array([30, 255, 255])),     # Yellow
+        (np.array([0, 100, 100]), np.array([10, 255, 255])),      # Red range 1
+        (np.array([160, 100, 100]), np.array([180, 255, 255])),   # Red range 2
+        (np.array([100, 100, 100]), np.array([130, 255, 255])),   # Blue
+        (np.array([40, 100, 100]), np.array([80, 255, 255]))      # Green
+    ]
 
-    if lines is not None:
-        for line in lines:
-            x1, y1, x2, y2 = line[0]
-            # Check if the line is mostly vertical
-            if abs(x1 - x2) < 20 and abs(y1 - y2) > 50:  
-                cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)  # Draw green line
+    figure_mask = np.zeros((frame.shape[0], frame.shape[1]), dtype=np.uint8)
+    for lower, upper in color_ranges_figure:
+        mask = cv2.inRange(hsv, lower, upper)
+        figure_mask = cv2.bitwise_or(figure_mask, mask)
 
-    return frame, dilated_edges
+    kernel = np.ones((5, 5), np.uint8)
+    figure_mask = cv2.morphologyEx(figure_mask, cv2.MORPH_OPEN, kernel)
+    figure_mask = cv2.morphologyEx(figure_mask, cv2.MORPH_CLOSE, kernel)
 
-# Start capturing frames
-for frame in camera.capture_continuous(raw_capture, format="bgr", use_video_port=True):
-    image = frame.array  # Convert to numpy array
-    
-    # Detect vertical objects
-    processed_frame, edge_output = detect_vertical_objects(image)
+    contours, _ = cv2.findContours(figure_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    for contour in contours:
+        area = cv2.contourArea(contour)
+        if area < 500:
+            continue
+        x, y, w, h = cv2.boundingRect(contour)
+        aspect_ratio = h / float(w)
+        if 1.5 < aspect_ratio < 4 and 20 < w < 80 and 40 < h < 150:
+            cv2.rectangle(result_image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            result["figure"] = True
 
-    # Save processed frames (since imshow doesn't work on Zumi)
-    cv2.imwrite("/home/pi/Dashboard/user/RobotChallenge/My_Projects/Jupyter/zumi_images/detected_objects.jpg", processed_frame)
-    cv2.imwrite("/home/pi/Dashboard/user/RobotChallenge/My_Projects/Jupyter/zumi_images/edges.jpg", edge_output)
+    # === CONE DETECTION: LAB COLOR SPACE ===
+    lab = cv2.cvtColor(frame, cv2.COLOR_BGR2LAB)
+    L, A, B = cv2.split(lab)
 
-    print("Images saved")
+    # Red pops in A channel: white/gray has ~128, red > 145
+    red_mask = cv2.inRange(A, 145, 255)
 
-    # Clear the stream for the next frame
+    small_kernel = np.ones((3, 3), np.uint8)
+    red_mask = cv2.morphologyEx(red_mask, cv2.MORPH_OPEN, small_kernel)
+    red_mask = cv2.morphologyEx(red_mask, cv2.MORPH_CLOSE, small_kernel)
+
+    # Save red mask debug image
+    if debug_dir:
+        os.makedirs(debug_dir, exist_ok=True)
+        cv2.imwrite(os.path.join(debug_dir, "lab_red_mask.jpg"), red_mask)
+
+    contours, _ = cv2.findContours(red_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    for cnt in contours:
+        area = cv2.contourArea(cnt)
+        if area < 30 or area > 1000:
+            continue
+
+        x, y, w, h = cv2.boundingRect(cnt)
+        aspect_ratio = h / float(w)
+
+        if 0.4 < aspect_ratio < 2.5 and 10 < w < 100 and 10 < h < 100:
+            cv2.rectangle(result_image, (x, y), (x + w, y + h), (0, 0, 255), 2)
+            result["cone"] = True
+            break
+
+    # Save result image with bounding boxes
+    if debug_dir:
+        cv2.imwrite(os.path.join(debug_dir, "detection_result.jpg"), result_image)
+
+    return result, result_image
+
+
+# --- Main Loop ---
+while True:
+    print("Capturing frame...")
+    camera.capture(raw_capture, format="bgr", use_video_port=True)
+    image = raw_capture.array
+
+    detections, result_image = detect_playmobil(image, debug_dir="/home/pi/Dashboard/user/RobotChallenge/My_Projects/Jupyter/zumi_debug")
+
+    timestamp = time.strftime("%Y-%m-%d_%H-%M-%S")
+
+    if detections["figure"]:
+        print("Playmobil figure detected")
+        path = os.path.join(image_dir, "playmobil_" + timestamp + ".jpg")
+        cv2.imwrite(path, result_image)
+        time.sleep(1)
+
+    if detections["cone"]:
+        print("Cone detected")
+        path = os.path.join(image_dir, "cone_" + timestamp + ".jpg")
+        cv2.imwrite(path, result_image)
+        time.sleep(1)
+
     raw_capture.truncate(0)
-
-    # Add a delay to control processing speed
-    time.sleep(1)  # Capture a frame every second
+    time.sleep(1)

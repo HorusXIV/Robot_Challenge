@@ -1,6 +1,9 @@
-Run started: 2025-03-23 12:47:57
-2025-03-23_12-48-31Playmobil detected
-2025-03-23_12-48-42Playmobil detected
-2025-03-23_12-48-50Playmobil detected
-2025-03-23_12-48-55Cone detected
-2025-03-23_12-49-12Playmobil detected
+Run started: 2025-03-23 13:57:17
+2025-03-23_13-57-33Cone detected
+2025-03-23_13-57-41Playmobil detected
+2025-03-23_13-57-52Cone detected
+2025-03-23_13-58-05Cone detected
+2025-03-23_13-58-11Cone detected
+2025-03-23_13-58-24Cone detected
+2025-03-23_13-58-30Cone detected
+2025-03-23_13-58-39Cone detected
