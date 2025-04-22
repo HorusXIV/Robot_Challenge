@@ -1,49 +1,5 @@
-Run started: 2025-03-25 11:32:58
-2025-03-25_11-33-07 Cone detected (total: 1)
-2025-03-25_11-33-10 Resuming line following after Cone detection
-2025-03-25_11-33-22 Cone detected (total: 2)
-2025-03-25_11-33-25 Resuming line following after Cone detection
-2025-03-25_11-33-32 Cone detected (total: 3)
-2025-03-25_11-33-35 Resuming line following after Cone detection
-2025-03-25_11-33-41 Cone detected (total: 4)
-2025-03-25_11-33-44 Resuming line following after Cone detection
-2025-03-25_11-33-47 Playmobil detected (total: 1)
-2025-03-25_11-33-55 Resuming line following after Playmobil detection
-2025-03-25_11-34-29 Front obstacle detected. Initiating QR scan.
-2025-03-25_11-34-29 Initiating QR scan
-2025-03-25_11-34-30 QR code detected: Right Circle
-2025-03-25_11-34-32 QR command received: right circle
-2025-03-25_11-34-32 Right Circle roundabout executed with rounds: 5
-2025-03-25_11-34-45 Rounds completed: 5
-2025-03-25_11-35-02 Front obstacle detected. Initiating QR scan.
-2025-03-25_11-35-02 Initiating QR scan
-2025-03-25_11-35-03 QR code detected: Turn Left
-2025-03-25_11-35-05 QR command received: turn left
-2025-03-25_11-35-06 Turn Left executed
-2025-03-25_11-35-12 Cone detected (total: 5)
-2025-03-25_11-35-15 Resuming line following after Cone detection
-2025-03-25_11-35-20 Playmobil detected (total: 2)
-2025-03-25_11-35-28 Resuming line following after Playmobil detection
-2025-03-25_11-35-31 Playmobil detected (total: 3)
-2025-03-25_11-35-39 Resuming line following after Playmobil detection
-2025-03-25_11-35-59 Cone detected (total: 6)
-2025-03-25_11-36-02 Resuming line following after Cone detection
-2025-03-25_11-36-07 Playmobil detected (total: 4)
-2025-03-25_11-36-15 Resuming line following after Playmobil detection
-2025-03-25_11-36-15 Cone detected (total: 7)
-2025-03-25_11-36-18 Resuming line following after Cone detection
-2025-03-25_11-36-24 Front obstacle detected. Initiating QR scan.
-2025-03-25_11-36-24 Initiating QR scan
-2025-03-25_11-36-25 No QR code detected
-2025-03-25_11-36-27 No QR code found after IR obstacle detection. Resuming line following.
-2025-03-25_11-36-28 Cone detected (total: 8)
-2025-03-25_11-36-31 Resuming line following after Cone detection
-2025-03-25_11-36-36 Front obstacle detected. Initiating QR scan.
-2025-03-25_11-36-36 Initiating QR scan
-2025-03-25_11-36-37 QR code detected: Zumi is happy today!
-2025-03-25_11-36-39 QR command received: zumi is happy today!
-2025-03-25_11-36-41 Zumi happy expression displayed
-Run ended: 2025-03-25 11:36:41
-Total runtime: 222.57737517356873 seconds
-Total turns: 33
-Playmobil figures detected: 4
+Run started: 2025-03-25 12:17:10
+2025-03-25_12-17-21 Kurve gezählt, aktuelle Anzahl: 1
+2025-03-25_12-17-24 Kurve gezählt, aktuelle Anzahl: 2
+2025-03-25_12-17-33 Kurve gezählt, aktuelle Anzahl: 3
+2025-03-25_12-17-44 Kurve gezählt, aktuelle Anzahl: 4

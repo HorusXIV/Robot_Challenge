@@ -1,0 +1,4 @@
+Entferntes Objekt erkannt – Zähler: 1
+Entferntes Objekt erkannt – Zähler: 1
+Objekt erkannt – Zähler: 1
+Objekt erkannt – Zähler: 2
