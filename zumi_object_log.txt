@@ -7,3 +7,4 @@ Objekt erkannt – Zähler: 2
 Total entfernte Objekte erkannt: 0
 Total entfernte Objekte erkannt: 0
 Total erkannte Gesichter: 2
+20250508_110647 – Face detected! Total faces: 1

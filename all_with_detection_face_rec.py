@@ -55,6 +55,13 @@ def cmd_celebrate_and_exit():
         screen.happy()
     return "exit"
 
+def cmd_stop():
+    zumi.stop()
+    time.sleep(3)
+    scan_qr()
+    return "exit"
+
+
 def cmd_unknown():
     print("Unbekannter QR-Befehl")
     return None
@@ -68,6 +75,7 @@ qr_actions = {
     "zumi is happy today!":     cmd_happy_and_exit,
     "zumi is angry today!":     cmd_angry_and_exit,
     "zumi is celebrating today!": cmd_celebrate_and_exit,
+    "stop":                     cmd_stop,
 }
 
 
