@@ -2,3 +2,8 @@ Entferntes Objekt erkannt – Zähler: 1
 Entferntes Objekt erkannt – Zähler: 1
 Objekt erkannt – Zähler: 1
 Objekt erkannt – Zähler: 2
+20250508_100411 – Face detected! Total faces: 1
+20250508_100434 – Face detected! Total faces: 2
+Total entfernte Objekte erkannt: 0
+Total entfernte Objekte erkannt: 0
+Total erkannte Gesichter: 2

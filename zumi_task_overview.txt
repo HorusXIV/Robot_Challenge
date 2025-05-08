@@ -11,9 +11,9 @@ Zumi Robot Challenge Task Overview (2025-05-08)
    Status:  Done
 
 3. Mission face detection
-   Team: <Team name here>
-   Problems encountered: <Problems or notes here>
-   Status:  Open
+   Team: Team 1
+   Problems encountered: used .format() instead of f-strings becasue old version of python
+   Status:  Done
 
 4. Mission QR code actions
    Team: <Team name here>
