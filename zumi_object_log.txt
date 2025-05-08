@@ -8,3 +8,10 @@ Total entfernte Objekte erkannt: 0
 Total entfernte Objekte erkannt: 0
 Total erkannte Gesichter: 2
 20250508_110647 – Face detected! Total faces: 1
+20250508_111439 – Face detected! Total faces: 1
+20250508_111454 – Face detected! Total faces: 2
+20250508_111507 – No face detected
+Objekt erkannt – Zähler: 1
+Total entfernte Objekte erkannt: 1
+Total entfernte Objekte erkannt: 1
+Total erkannte Gesichter: 2

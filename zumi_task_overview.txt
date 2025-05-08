@@ -86,9 +86,9 @@ Zumi Robot Challenge Task Overview (2025-05-08)
    Status:  Done
 
 18. Extra Task: No if/else for QR actions
-   Team: <Team name here>
-   Problems encountered: <Problems or notes here>
-   Status:  Open
+   Team: Team 1
+   Problems encountered: forgot to add stop message to dictionary
+   Status:  Done
 
 19. Extra Task: Plot map data and save as PNG
    Team: <Team name here>

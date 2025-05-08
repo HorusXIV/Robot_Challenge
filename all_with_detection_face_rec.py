@@ -31,10 +31,14 @@ def cmd_turn_left():
     zumi.turn_left(90)
 
 def cmd_left_circle():
-    left_roundabout(1)
+    laps = object_counter - face_counter
+    if laps > 0:
+        left_roundabout(laps)
 
 def cmd_right_circle():
-    right_roundabout(1)
+    laps = object_counter - face_counter
+    if laps > 0:
+        left_roundabout(laps)
 
 def cmd_happy_and_exit():
     screen.happy()
