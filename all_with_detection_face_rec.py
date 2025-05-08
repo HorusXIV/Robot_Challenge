@@ -21,7 +21,11 @@ object_counter = 0
 face_counter   = 0
 
 # Logging-Datei vorbereiten
-log_file = open("zumi_object_log.txt", "a")
+csv_file = open("zumi_log.csv", "a", newline="")
+csv_writer = csv.writer(csv_file)
+# Falls die Datei neu ist, schreib Kopfzeile (optional):
+if os.stat("zumi_log.csv").st_size == 0:
+    csv_writer.writerow(["timestamp", "event", "count"])
 
 ### — QR-Command-Handler — 
 def cmd_turn_right():
@@ -38,7 +42,7 @@ def cmd_left_circle():
 def cmd_right_circle():
     laps = object_counter - face_counter
     if laps > 0:
-        left_roundabout(laps)
+        right_roundabout(laps)
 
 def cmd_happy_and_exit():
     screen.happy()
@@ -203,7 +207,8 @@ def detect_and_log_face():
     else:
         msg = "{} – No face detected".format(ts)
     print(msg)
-    log_file.write(msg + "\n")
+    # CSV-Eintrag: Timestamp, Event „face_detected“, Gesamt-Anzahl
+    csv_writer.writerow([ts, "face_detected", face_counter])
     return True if loc else False
 
 # --- Main Loop ---
@@ -238,10 +243,12 @@ while True:
             face_found = detect_and_log_face()
             if not face_found:
                 print("Gesicht nicht erkannt. Zähle als Objekt.")
-                object_counter = 1
+                object_counter += 1
                 msg = "Objekt erkannt – Zähler: {}".format(object_counter)
                 print(msg)
-                log_file.write(msg + "\n")
+                # CSV-Eintrag: Timestamp, Event „object_detected“, Gesamt-Anzahl
+                ts2 = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+                csv_writer.writerow([ts2, "object_detected", object_counter])
 
 
         while True:
@@ -281,7 +288,4 @@ while True:
         zumi.control_motors(0, 1)
 
 # --- Ende Logging ---
-log_file.write("Total entfernte Objekte erkannt: {}\n".format(object_counter))
-log_file.write("Total entfernte Objekte erkannt: {}\n".format(object_counter))
-log_file.write("Total erkannte Gesichter: {}\n".format(face_counter))
-log_file.close()
+csv_file.close()
