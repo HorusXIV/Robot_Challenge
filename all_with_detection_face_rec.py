@@ -23,6 +23,53 @@ face_counter   = 0
 # Logging-Datei vorbereiten
 log_file = open("zumi_object_log.txt", "a")
 
+### — QR-Command-Handler — 
+def cmd_turn_right():
+    zumi.forward(15, 0.3)
+
+def cmd_turn_left():
+    zumi.turn_left(90)
+
+def cmd_left_circle():
+    left_roundabout(1)
+
+def cmd_right_circle():
+    right_roundabout(1)
+
+def cmd_happy_and_exit():
+    screen.happy()
+    zumi.stop()
+    return "exit"
+
+def cmd_angry_and_exit():
+    if hasattr(screen, 'angry'):
+        screen.angry()
+    else:
+        zumi.stop()
+    return "exit"
+
+def cmd_celebrate_and_exit():
+    if hasattr(screen, 'celebrate'):
+        screen.celebrate()
+    else:
+        screen.happy()
+    return "exit"
+
+def cmd_unknown():
+    print("Unbekannter QR-Befehl")
+    return None
+
+### — Dispatch-Dictionary für QR-Befehle —
+qr_actions = {
+    "turn right":               cmd_turn_right,
+    "turn left":                cmd_turn_left,
+    "left circle":              cmd_left_circle,
+    "right circle":             cmd_right_circle,
+    "zumi is happy today!":     cmd_happy_and_exit,
+    "zumi is angry today!":     cmd_angry_and_exit,
+    "zumi is celebrating today!": cmd_celebrate_and_exit,
+}
+
 
 # --- IR-based Line Following Functions ---
 def linefolower_ir(bottom_right, bottom_left, threshold):
@@ -169,44 +216,17 @@ while True:
         time.sleep(2)
 
         if qr_code:
-            command = qr_code.lower()
-            print("✅ QR-Code erkannt:", command)
-            if command == "turn right":
-                zumi.forward(15, .3)
-            elif command == "turn left":
-                zumi.turn_left(90)
-            elif command == "left circle":
-                left_roundabout(1)
-            elif command == "right circle":
-                right_roundabout(1)
-            elif command == "zumi is happy today!":
-                screen.happy()
-                zumi.stop()
-                break
-            elif command == "zumi is angry today!":
-                if hasattr(screen, 'angry'):
-                    screen.angry()
-                else:
-                    zumi.stop()
-                break
-            elif command == "zumi is celebrating today!":
-                if hasattr(screen, 'celebrate'):
-                    screen.celebrate()
-                else:
-                    screen.happy()
-                break
-            elif command == "stop":
-                zumi.stop()
-                time.sleep(3)
-                scan_qr()
+            cmd = qr_code.strip().lower()
+            handler = qr_actions.get(cmd, cmd_unknown)
+            result = handler()
+            if result == "exit":
                 break
         else:
-            # Kein QR → zuerst Gesichtserkennung
+            # Kein QR → zuerst Gesichtserkennung oder Objekt zählen
             face_found = detect_and_log_face()
             if not face_found:
-                # Gesicht nicht erkannt → Zähle als Objekt
                 print("Gesicht nicht erkannt. Zähle als Objekt.")
-                object_counter += 1
+                object_counter = 1
                 msg = "Objekt erkannt – Zähler: {}".format(object_counter)
                 print(msg)
                 log_file.write(msg + "\n")
