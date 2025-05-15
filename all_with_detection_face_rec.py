@@ -250,6 +250,10 @@ while True:
                 ts2 = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
                 csv_writer.writerow([ts2, "object_detected", object_counter])
 
+        # begin timeout for object‐clearing
+        start_wait = time.time()
+        MAX_WAIT   = 10  # seconds
+
 
         while True:
             ir_readings = zumi.get_all_IR_data()

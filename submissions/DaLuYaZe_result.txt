@@ -1,5 +1,0 @@
-Run started: 2025-03-25 12:17:10
-2025-03-25_12-17-21 Kurve gezählt, aktuelle Anzahl: 1
-2025-03-25_12-17-24 Kurve gezählt, aktuelle Anzahl: 2
-2025-03-25_12-17-33 Kurve gezählt, aktuelle Anzahl: 3
-2025-03-25_12-17-44 Kurve gezählt, aktuelle Anzahl: 4
