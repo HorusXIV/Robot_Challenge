@@ -5,7 +5,6 @@ import time
 zumi = Zumi()
 
 
-
 # while True:
 #     ir_readings = zumi.get_all_IR_data()
 #     front_right = ir_readings[0]

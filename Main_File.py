@@ -1,5 +1,6 @@
 from zumi.zumi import Zumi
 from zumi.util.screen import Screen
+from zumi.protocol import Note
 import csv
 import time
 import datetime
@@ -23,7 +24,7 @@ object_counter = 0
 face_counter   = 0
 
 # Control Motors Variablen
-speed_l = 10
+speed_l = 5
 speed_r = 8
 
 last_qr_text = None
@@ -310,7 +311,6 @@ def detect_and_log_face():
     csv_writer.writerow([ts, "face_detected", face_counter])
     return True if loc else False
 
-
 # --- Main Loop ---
 while True:
     ir_readings = zumi.get_all_IR_data()
@@ -330,6 +330,21 @@ while True:
         # print("IR vorne links :", front_left)
         # print("Threshold-Wert:", threshold)
         zumi.stop()
+
+        zumi.brake_lights_on()
+        zumi.play_note(Note.G5, 200)
+        time.sleep(0.05)
+        # zweiter Piepton
+        zumi.play_note(Note.C6, 200)
+
+        screen.draw_text_center('Object detected!',font_size=15)
+
+        time.sleep(1)
+
+        # Licht und Screen zurücksetzen
+        zumi.brake_lights_off()
+        screen.clear_display()
+
         time.sleep(5)
         print("Objekt erkannt – versuche QR-Code zu lesen ...")
         print("Objekt Zähler:", object_counter)
@@ -428,39 +443,6 @@ with open("manhattan_distance.csv", "a", newline="") as md_file:
     md_writer.writerow([datetime.datetime.now().strftime("%Y%m%d_%H%M%S"),
                         round(manhattan_dist, 2)])
 
-# --- Map-Plot aus movement_log erzeugen ---
-
-
-
-# # --- Map-Plot aus movement_log (mit Turn-Odometry) ---
-# x, y      = 0.0, 0.0
-# heading   = 0.0        # 0° = +Y
-# positions = [(x, y)]
-
-# for direction, duration, turn in movement_log:
-#     dist = duration * speed_cm_per_s
-#     # Δx/Δy vom aktuellen Heading
-#     dx = dist * math.sin(math.radians(heading))
-#     dy = dist * math.cos(math.radians(heading))
-#     x += dx; y += dy
-#     positions.append((x, y))
-#     # Heading um 90° drehen, wenn Kurve folgt
-#     if turn == 'R':
-#         heading = (heading + 90) % 360
-#     elif turn == 'L':
-#         heading = (heading - 90) % 360
-
-# # Plot zeichen und speichern
-# xs, ys = zip(*positions)
-# plt.figure()
-# plt.plot(xs, ys, '-o')
-# plt.axis('equal')
-# plt.title("Zumi Path Map")
-# plt.xlabel("X [cm]"); plt.ylabel("Y [cm]")
-# plt.grid(True)
-# plt.savefig("zumi_map.png", dpi=150)
-# print("Karte gespeichert als 'zumi_map.png'")
-
 # --- Map-Plot aus movement_log (mit Turn-Odometry) ---
 x, y      = 0.0, 0.0
 heading   = 0.0        # 0° = +Y
@@ -492,7 +474,7 @@ plt.axis('equal')
 plt.xlim(left=0)
 plt.ylim(bottom=0)
 
-plt.title("Zumi Pfad (nur positive Werte ab Start)")
+plt.title("Zumi Map")
 plt.xlabel("X-Verschiebung vom Start [cm]")
 plt.ylabel("Y-Verschiebung vom Start [cm]")
 plt.grid(True)
