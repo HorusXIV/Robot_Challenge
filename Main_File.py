@@ -339,7 +339,7 @@ while True:
 
         screen.draw_text_center('Object detected!',font_size=15)
 
-        time.sleep(1)
+        time.sleep(2)
 
         # Licht und Screen zurücksetzen
         zumi.brake_lights_off()
