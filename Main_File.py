@@ -3,12 +3,12 @@ from zumi.util.screen import Screen
 from zumi.protocol import Note
 import csv
 import time
-import datetime
+from datetime import datetime
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 from picamera.array import PiRGBArray
-from picamera import PiCamera
+from picamera import PiCameraspinning
 from zumi.util.vision import Vision  # Built-in Vision module
 from utility import upload_submission, log_event
 import cv2  # for face‐box drawing & saving
@@ -29,12 +29,16 @@ speed_r = 8
 
 last_qr_text = None
 
-# Logging-Datei vorbereiten
-csv_file = open("zumi_log.csv", "a", newline="")
-csv_writer = csv.writer(csv_file)
-# Falls die Datei neu ist, schreib Kopfzeile (optional):
-if os.stat("zumi_log.csv").st_size == 0:
-    csv_writer.writerow(["timestamp", "event", "count"])
+# Text file logging preparation
+log_file_path = "submissions/Zumi3843_result.txt"
+# Create directories if they don't exist
+os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
+
+# Initialize log file with header
+with open(log_file_path, "w") as log_file:
+    log_file.write("=== ZUMI ROBOT MISSION LOG ===\n")
+    start_time = datetime.now()
+    log_file.write("Mission Start: "+ start_time.strftime('%Y-%m-%d %H:%M:%S') + "\n\n")
 
 # --- Mapping-Funktionalität ---
 movement_log = []
@@ -51,6 +55,9 @@ def record_segment(next_turn):
     now = time.time()
     duration = now - last_dir_change_time
     movement_log.append((current_direction, duration, next_turn))
+    # Log the turn
+    if next_turn:
+        log_event(log_file_path,"TURN", "Direction: " + str(next_turn) + ", Duration in " + str(current_direction) + ": " + str(duration) + "s")
     # Toggle Achse
     current_direction = 'horizontal' if current_direction=='vertical' else 'vertical'
     last_dir_change_time = now
@@ -74,18 +81,22 @@ def drive_straight_until_line():
 
 ### — QR-Command-Handler — 
 def cmd_turn_right():
+    log_event(log_file_path,"QR ACTION", "Executing: turn right")
     zumi.forward(15, 0.3)
 
 def cmd_turn_left():
+    log_event(log_file_path,"QR ACTION", "Executing: turn left")
     zumi.turn_left(90)
 
 def cmd_left_circle():
     laps = object_counter - face_counter
+    log_event(log_file_path,"QR ACTION", "Executing: left circle with " + str(laps) + " laps")
     if laps > 0:
         left_roundabout(laps)
 
 def cmd_right_circle():
     laps = object_counter - face_counter
+    log_event(log_file_path,"QR ACTION", "Executing: right circle with" + str(laps) + "laps")
     
     if laps > 0:
         right_roundabout(laps)
@@ -93,11 +104,13 @@ def cmd_right_circle():
     last_dir_change_time = time.time()
 
 def cmd_happy_and_exit():
+    log_event(log_file_path,"QR ACTION", "Executing: happy emotion and exit")
     screen.happy()
     zumi.stop()
     return "exit"
 
 def cmd_angry_and_exit():
+    log_event(log_file_path,"QR ACTION", "Executing: angry emotion and exit")
     if hasattr(screen, 'angry'):
         screen.angry()
     else:
@@ -105,6 +118,7 @@ def cmd_angry_and_exit():
     return "exit"
 
 def cmd_celebrate_and_exit():
+    log_event(log_file_path,"QR ACTION", "Executing: celebrate emotion and exit")
     if hasattr(screen, 'celebrate'):
         screen.celebrate()
     else:
@@ -112,6 +126,7 @@ def cmd_celebrate_and_exit():
     return "exit"
 
 def cmd_stop():
+    log_event(log_file_path,"QR ACTION", "Executing: stop command")
     zumi.stop()
     time.sleep(3)
     scan_qr()
@@ -127,6 +142,7 @@ def cmd_unknown():
 
     text = last_qr_text or ""
     if "360" in text:
+        log_event(log_file_path,"QR ACTION", "Processing complex command: " + text + "")
         # 1) Teile am Komma: ['1x 360° left', ' emotion: none']
         parts = [p.strip() for p in text.split(",", 1)]
         spin_part = parts[0]            # z.B. "2x 360° right"
@@ -164,7 +180,7 @@ def cmd_unknown():
         return None
 
     # wenn kein Spin-Pattern, normaler Unknown-Log
-    print("Unbekannter QR-Befehl:", text)
+    log_event(log_file_path,"QR ACTION", "Unknown QR command: " + text + "")
     return None
 
 
@@ -192,6 +208,7 @@ def linefolower_ir(bottom_right, bottom_left, threshold):
 
 
 def right_roundabout(num_rounds):
+    log_event(log_file_path,"ROUNDABOUT", "Entering right roundabout with " + str(num_rounds) + " rounds")
     print("right circle")
     zumi.forward(speed=10, duration=0.2)
     record_segment('R')
@@ -210,6 +227,7 @@ def right_roundabout(num_rounds):
                 turns_taken = 0
                 print("Turns taken:", turns_taken)
                 circled += 1
+                log_event(log_file_path,"ROUNDABOUT", "Completed " + str(circled) + " of " + str(num_rounds) + " circles")
                 print("Circled:", circled)
             else:
                 record_segment('R')
@@ -222,10 +240,12 @@ def right_roundabout(num_rounds):
             print("Rounds completed:", circled)
             record_segment('L')
             zumi.turn_left(75)
+            log_event(log_file_path,"ROUNDABOUT", "Exiting right roundabout after " + str(circled) + " rounds")
             break
 
 
 def left_roundabout(num_rounds):
+    log_event(log_file_path,"ROUNDABOUT", "Entering left roundabout with " + str(num_rounds) + " rounds")
     print("left circle")
     zumi.forward(speed=10, duration=0.2)
     record_segment('L')
@@ -244,6 +264,7 @@ def left_roundabout(num_rounds):
                 turns_taken = 0
                 print("Turns taken:", turns_taken)
                 circled += 1
+                log_event(log_file_path,"ROUNDABOUT", "Completed " + str(circled) + " of " + str(num_rounds) + " circles")
                 print("Circled:", circled)
             else:
                 record_segment('L')
@@ -256,6 +277,7 @@ def left_roundabout(num_rounds):
             print("Rounds completed:", circled)
             record_segment('R')
             zumi.turn_right(75)
+            log_event(log_file_path,"ROUNDABOUT", "Exiting left roundabout after "+ str(circled) +"  rounds")
             break
 
 
@@ -272,6 +294,7 @@ def scan_qr():
     qr_result = vision.get_QR_message(qr_code)
     if qr_result:
         last_qr_text = qr_result.strip().lower()
+        log_event(log_file_path,"QR DETECTED", "Code:" + str(last_qr_text))
         return last_qr_text
     else:
         last_qr_text = None
@@ -296,7 +319,7 @@ def detect_and_log_face():
     frame = scan_face_frame()
     loc   = vision.find_face(frame, scale_factor=1.05,
                              min_neighbors=8, min_size=(40,40))
-    ts = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     if loc:
         x,y,w,h = loc
         cv2.rectangle(frame, (x,y), (x+w,y+h), (255,0,0), 2)
@@ -304,14 +327,15 @@ def detect_and_log_face():
         cv2.imwrite(fname, frame)
         face_counter += 1
         msg = "{} – Face detected! Total faces: {}".format(ts, face_counter)
+        log_event(log_file_path,"FACE DETECTED", "Total faces so far: " + str(face_counter) + "")
     else:
         msg = "{} – No QR or Face detected".format(ts)
+        log_event(log_file_path,"DETECTION ATTEMPT", "No QR or Face detected")
     print(msg)
-    # CSV-Eintrag: Timestamp, Event „face_detected“, Gesamt-Anzahl
-    csv_writer.writerow([ts, "face_detected", face_counter])
     return True if loc else False
 
 # --- Main Loop ---
+log_event(log_file_path,"MISSION", "Starting main loop")
 while True:
     ir_readings = zumi.get_all_IR_data()
     bottom_right = ir_readings[1]
@@ -331,6 +355,9 @@ while True:
         # print("Threshold-Wert:", threshold)
         zumi.stop()
 
+        object_detect_time = datetime.now()
+        log_event(log_file_path,"OBJECT DETECTED", "Total objects so far: " + str(object_counter) + "")
+        
         zumi.brake_lights_on()
         zumi.play_note(Note.G5, 200)
         time.sleep(0.05)
@@ -348,9 +375,6 @@ while True:
         time.sleep(5)
         print("Objekt erkannt – versuche QR-Code zu lesen ...")
         print("Objekt Zähler:", object_counter)
-        # CSV-Eintrag: Timestamp, Event „object_detected“, Gesamt-Anzahl
-        ts2 = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        csv_writer.writerow([ts2, "object_detected", object_counter])
 
         qr_code = scan_qr()
         time.sleep(2)
@@ -362,6 +386,7 @@ while True:
             result = handler()
             if result == "exit":
                 last_dir_change_time = time.time()
+                log_event(log_file_path,"MISSION", "Exiting main loop due to QR command")
                 break
         else:
             # Kein QR → zuerst Gesichtserkennung oder Objekt zählen
@@ -369,6 +394,9 @@ while True:
             # if not face_found:
             #     print("Gesicht nicht erkannt. Ich fahre weiter.")  
                 
+        # Log object interaction duration
+        object_duration = (datetime.now() - object_detect_time).total_seconds()
+        log_event(log_file_path,"OBJECT INTERACTION", "Duration: " + str(object_duration) + " seconds")
 
         # begin timeout for object‐clearing
         start_wait = time.time()
@@ -382,6 +410,7 @@ while True:
             if front_right > 60 and front_left > 60:
                 break
             if time.time() - start_wait > MAX_WAIT:
+                log_event(log_file_path,"WARNING", "Timeout: Object remained too long")
                 print("⚠️ Timeout: Objekt bleibt zu lange!")
                 break
             time.sleep(0.2)
@@ -415,8 +444,6 @@ while True:
         zumi.control_motors(0, 1)
 
 # --- Ende Logging ---
-csv_file.close()
-
 # --- Ende Mapping-Log und Berechnung Manhattan-Distanz ---
 # letztes Segment ohne folgende Kurve speichern
 record_segment(None)
@@ -431,17 +458,18 @@ h_dist = h_dur * speed_cm_per_s
 v_dist = v_dur * speed_cm_per_s
 manhattan_dist = h_dist + v_dist
 
-print(
-    "Geschätzte Manhattan-Distanz: {:.2f} cm "
-    "(horizontal: {:.2f} cm, vertikal: {:.2f} cm)"
+manhattan_result = (
+    "Geschätzte Manhattan-Distanz: {} units "
+    "(horizontal: {} units, vertikal: {} units)"
     .format(manhattan_dist, h_dist, v_dist)
 )
+print(manhattan_result)
 
-# Abschliessendes Log in CSV
+# Abschliessendes Log in CSV (keeping this part for backward compatibility)
 with open("manhattan_distance.csv", "a", newline="") as md_file:
     md_writer = csv.writer(md_file)
-    md_writer.writerow([datetime.datetime.now().strftime("%Y%m%d_%H%M%S"),
-                        round(manhattan_dist, 2)])
+    md_writer.writerow([datetime.now().strftime("%Y%m%d_%H%M%S"),
+                        round((manhattan_dist), 2)])
 
 # --- Map-Plot aus movement_log (mit Turn-Odometry) ---
 x, y      = 0.0, 0.0
@@ -475,8 +503,30 @@ plt.xlim(left=0)
 plt.ylim(bottom=0)
 
 plt.title("Zumi Map")
-plt.xlabel("X-Verschiebung vom Start [cm]")
-plt.ylabel("Y-Verschiebung vom Start [cm]")
+plt.xlabel("X-Verschiebung vom Start [units]")
+plt.ylabel("Y-Verschiebung vom Start [units]")
 plt.grid(True)
 plt.savefig("zumi_map.png", dpi=150)
+log_event(log_file_path,"MAP GENERATED", "Map saved as 'zumi_map.png'")
 print("Karte gespeichert als 'zumi_map.png'")
+
+# Final summary in log file
+with open(log_file_path, "a") as log_file:
+    end_time = datetime.now()
+    mission_duration = (end_time - start_time).total_seconds()
+    
+    log_file.write("\n=== MISSION SUMMARY ===\n")
+    log_file.write("Mission End: " + str(end_time.strftime('%Y-%m-%d %H:%M:%S')) + "\n")
+    log_file.write("Mission Duration: " + str(mission_duration) + " seconds\n\n")
+    
+    log_file.write("--- OBJECT STATISTICS ---\n")
+    log_file.write("Total Objects Detected: " + str(object_counter) + "\n")
+    log_file.write("Total Faces Detected: " + str(face_counter) + "\n\n")
+    
+    log_file.write("--- PATH STATISTICS ---\n")
+    log_file.write("Total Turns: " + str(len([t for _, _, t in movement_log if t is not None])) + "\n")
+    log_file.write("Horizontal Distance: " + str(h_dist) + " units\n")
+    log_file.write("Vertical Distance: " + str(v_dist) + "units\n")
+    log_file.write("Manhattan Distance: " + str(manhattan_dist) + " units\n")
+
+upload_submission()
