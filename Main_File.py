@@ -219,7 +219,7 @@ def linefolower_ir(bottom_right, bottom_left, threshold):
 def right_roundabout(num_rounds):
     log_event(log_file_path,"ROUNDABOUT", "Entering right roundabout with " + str(num_rounds) + " rounds")
     print("right circle")
-    zumi.forward(speed=10, duration=0.2)
+    zumi.forward(speed=10, duration=0.4)
     record_segment('R')
     zumi.turn_right(75)
     turns_taken = 1
@@ -256,7 +256,7 @@ def right_roundabout(num_rounds):
 def left_roundabout(num_rounds):
     log_event(log_file_path,"ROUNDABOUT", "Entering left roundabout with " + str(num_rounds) + " rounds")
     print("left circle")
-    zumi.forward(speed=10, duration=0.2)
+    zumi.forward(speed=10, duration=0.4)
     record_segment('L')
     zumi.turn_left(75)
     turns_taken = 1
@@ -360,7 +360,7 @@ while True:
         # Segment beenden – mit record_segment (kein Turn)
         record_segment(None)
 
-        object_counter += 1
+        # object_counter += 1
         # print("IR vorne rechts:", front_right)
         # print("IR vorne links :", front_left)
         # print("Threshold-Wert:", threshold)
@@ -402,8 +402,9 @@ while True:
         else:
             # Kein QR → zuerst Gesichtserkennung oder Objekt zählen
             face_found = detect_and_log_face()
-            # if not face_found:
-            #     print("Gesicht nicht erkannt. Ich fahre weiter.")  
+            if not face_found:
+                object_counter += 1
+                print("Gesicht nicht erkannt. object_counter:", object_counter)  
                 
         # Log object interaction duration
         object_duration = (datetime.now() - object_detect_time).total_seconds()
