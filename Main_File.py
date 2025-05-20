@@ -81,21 +81,25 @@ def drive_straight_until_line():
 
 ### — QR-Command-Handler — 
 def cmd_turn_right():
+    print("QR ACTION", "Executing: turn right")
     log_event(log_file_path,"QR ACTION", "Executing: turn right")
     zumi.forward(15, 0.3)
 
 def cmd_turn_left():
+    print("QR ACTION", "Executing: turn left")
     log_event(log_file_path,"QR ACTION", "Executing: turn left")
     zumi.turn_left(90)
 
 def cmd_left_circle():
     laps = object_counter - face_counter
+    print("QR ACTION", "Executing: left circle with " + str(laps) + " laps")
     log_event(log_file_path,"QR ACTION", "Executing: left circle with " + str(laps) + " laps")
     if laps > 0:
         left_roundabout(laps)
 
 def cmd_right_circle():
     laps = object_counter - face_counter
+    print("QR ACTION", "Executing: right circle with" + str(laps) + "laps")
     log_event(log_file_path,"QR ACTION", "Executing: right circle with" + str(laps) + "laps")
     
     if laps > 0:
@@ -104,12 +108,14 @@ def cmd_right_circle():
     last_dir_change_time = time.time()
 
 def cmd_happy_and_exit():
+    print("QR ACTION", "Executing: happy emotion and exit")
     log_event(log_file_path,"QR ACTION", "Executing: happy emotion and exit")
     screen.happy()
     zumi.stop()
     return "exit"
 
 def cmd_angry_and_exit():
+    print("QR ACTION", "Executing: angry emotion and exit")
     log_event(log_file_path,"QR ACTION", "Executing: angry emotion and exit")
     if hasattr(screen, 'angry'):
         screen.angry()
@@ -118,6 +124,7 @@ def cmd_angry_and_exit():
     return "exit"
 
 def cmd_celebrate_and_exit():
+    print("QR ACTION", "Executing: celebrate emotion and exit")
     log_event(log_file_path,"QR ACTION", "Executing: celebrate emotion and exit")
     if hasattr(screen, 'celebrate'):
         screen.celebrate()
@@ -126,6 +133,7 @@ def cmd_celebrate_and_exit():
     return "exit"
 
 def cmd_stop():
+    print("QR ACTION", "Executing: stop command")
     log_event(log_file_path,"QR ACTION", "Executing: stop command")
     zumi.stop()
     time.sleep(3)
@@ -134,6 +142,7 @@ def cmd_stop():
 
 
 def cmd_unknown():
+    print("QR ACTION", "Processing complex command: " + text + "")
     """
     Wenn last_qr_text ein 'Nx 360° left|right, emotion: ...' enthält,
     dann hier spin + optional Emotion + Geradeaus bis Linie. Sonst nur print.
@@ -297,6 +306,7 @@ def scan_qr():
         log_event(log_file_path,"QR DETECTED", "Code:" + str(last_qr_text))
         return last_qr_text
     else:
+        print("kein QR gefunden -> suche nach Gesicht")
         last_qr_text = None
         return None
 
@@ -329,6 +339,7 @@ def detect_and_log_face():
         msg = "{} – Face detected! Total faces: {}".format(ts, face_counter)
         log_event(log_file_path,"FACE DETECTED", "Total faces so far: " + str(face_counter) + "")
     else:
+        print("{} – No QR or Face detected")
         msg = "{} – No QR or Face detected".format(ts)
         log_event(log_file_path,"DETECTION ATTEMPT", "No QR or Face detected")
     print(msg)
