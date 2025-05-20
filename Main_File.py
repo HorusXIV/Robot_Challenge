@@ -8,7 +8,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from picamera.array import PiRGBArray
-from picamera import PiCameraspinning
+from picamera import PiCamera
 from zumi.util.vision import Vision  # Built-in Vision module
 from utility import upload_submission, log_event
 import cv2  # for face‐box drawing & saving
