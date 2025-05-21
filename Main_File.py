@@ -142,14 +142,15 @@ def cmd_stop():
 
 
 def cmd_unknown():
+    global last_dir_change_time
+
+    text = last_qr_text or ""
     print("QR ACTION", "Processing complex command: " + text + "")
     """
     Wenn last_qr_text ein 'Nx 360° left|right, emotion: ...' enthält,
     dann hier spin + optional Emotion + Geradeaus bis Linie. Sonst nur print.
     """
-    global last_dir_change_time
-
-    text = last_qr_text or ""
+    
     if "360" in text:
         log_event(log_file_path,"QR ACTION", "Processing complex command: " + text + "")
         # 1) Teile am Komma: ['1x 360° left', ' emotion: none']
@@ -333,7 +334,7 @@ def detect_and_log_face():
     if loc:
         x,y,w,h = loc
         cv2.rectangle(frame, (x,y), (x+w,y+h), (255,0,0), 2)
-        fname = "face_{}.png".format(ts)
+        fname = "sumbissions/faces/face_{}.png".format(ts)
         cv2.imwrite(fname, frame)
         face_counter += 1
         msg = "{} – Face detected! Total faces: {}".format(ts, face_counter)
@@ -518,7 +519,7 @@ plt.title("Zumi Map")
 plt.xlabel("X-Verschiebung vom Start [units]")
 plt.ylabel("Y-Verschiebung vom Start [units]")
 plt.grid(True)
-plt.savefig("zumi_map.png", dpi=150)
+plt.savefig("submissions/zumi_map.png", dpi=150)
 log_event(log_file_path,"MAP GENERATED", "Map saved as 'zumi_map.png'")
 print("Karte gespeichert als 'zumi_map.png'")
 
