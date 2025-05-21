@@ -163,6 +163,8 @@ def cmd_unknown():
         count = int(spin_part.split("x",1)[0])
         direction = "left" if "left" in spin_part else "right"
 
+        zumi.forward(speed=10, duration=0.4)
+
         # 3) Spins ausführen
         for _ in range(count):
             if direction == "left":
