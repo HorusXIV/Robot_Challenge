@@ -24,8 +24,8 @@ object_counter = 0
 face_counter   = 0
 
 # Control Motors Variablen
-speed_l = 5
-speed_r = 8
+speed_l = 1
+speed_r = 15
 
 last_qr_text = None
 
@@ -102,6 +102,12 @@ def cmd_right_circle():
     print("QR ACTION", "Executing: right circle with" + str(laps) + "laps")
     log_event(log_file_path,"QR ACTION", "Executing: right circle with" + str(laps) + "laps")
     
+    if laps < 0:
+        laps = 0
+    print("QR ACTION", "Executing: right circle with " + str(laps) + " laps")
+    
+    log_event(log_file_path, "QR ACTION", "Executing: right circle with " + str(laps) + " laps")
+
     if laps > 0:
         right_roundabout(laps)
     global last_dir_change_time
@@ -437,6 +443,7 @@ while True:
     if bottom_right < threshold and bottom_left < threshold:
         zumi.reverse(speed=15, duration=0.2)
         zumi.turn_right(70)
+        zumi.forward(speed=10, duration=0.4)
         ir_readings = zumi.get_all_IR_data()
         bottom_right = ir_readings[1]
         bottom_left = ir_readings[3]
