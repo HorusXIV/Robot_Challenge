@@ -1,49 +1,44 @@
 === ZUMI ROBOT MISSION LOG ===
-Mission Start: 2025-06-06 13:21:47
+Mission Start: 2025-06-06 13:26:46
 
-[2025-06-06 13:21:47] MISSION : Starting main loop
-[2025-06-06 13:21:48] OBJECT DETECTED : Total objects so far: 0
-[2025-06-06 13:21:57] QR DETECTED : Code:1x 360ｰ left, emotion: none
-[2025-06-06 13:21:59] QR ACTION : Processing complex command: 1x 360ｰ left, emotion: none
-[2025-06-06 13:22:04] OBJECT INTERACTION : Duration: 15.819474 seconds
-[2025-06-06 13:22:07] OBJECT DETECTED : Total objects so far: 0
-[2025-06-06 13:22:18] DETECTION ATTEMPT : No QR or Face detected
-[2025-06-06 13:22:18] OBJECT INTERACTION : Duration: 11.713218 seconds
-[2025-06-06 13:22:19] OBJECT DETECTED : Total objects so far: 1
-[2025-06-06 13:22:31] DETECTION ATTEMPT : No QR or Face detected
-[2025-06-06 13:22:31] OBJECT INTERACTION : Duration: 11.826627 seconds
-[2025-06-06 13:22:32] OBJECT DETECTED : Total objects so far: 2
-[2025-06-06 13:22:41] QR DETECTED : Code:1x 360ｰ left, emotion: none
-[2025-06-06 13:22:43] QR ACTION : Processing complex command: 1x 360ｰ left, emotion: none
-[2025-06-06 13:22:48] OBJECT INTERACTION : Duration: 15.585634 seconds
-[2025-06-06 13:22:49] OBJECT DETECTED : Total objects so far: 2
-[2025-06-06 13:23:01] DETECTION ATTEMPT : No QR or Face detected
-[2025-06-06 13:23:01] OBJECT INTERACTION : Duration: 11.495522 seconds
-[2025-06-06 13:23:02] OBJECT DETECTED : Total objects so far: 3
-[2025-06-06 13:23:14] DETECTION ATTEMPT : No QR or Face detected
-[2025-06-06 13:23:14] OBJECT INTERACTION : Duration: 11.924866 seconds
-[2025-06-06 13:23:16] TURN : Direction: L, Duration in vertical: 1.8112318515777588s
-[2025-06-06 13:23:19] OBJECT DETECTED : Total objects so far: 4
-[2025-06-06 13:23:28] QR DETECTED : Code:1x 360ｰ left, emotion: zumi is happy today!
-[2025-06-06 13:23:30] QR ACTION : Processing complex command: 1x 360ｰ left, emotion: zumi is happy today!
-[2025-06-06 13:23:32] QR ACTION : Executing: happy emotion and exit
-[2025-06-06 13:23:36] OBJECT INTERACTION : Duration: 17.238978 seconds
-[2025-06-06 13:23:37] OBJECT DETECTED : Total objects so far: 4
-[2025-06-06 13:23:46] QR DETECTED : Code:zumi is angry today!
-[2025-06-06 13:23:48] QR ACTION : Executing: angry emotion and exit
-[2025-06-06 13:23:49] MISSION : Exiting main loop due to QR command
-[2025-06-06 13:23:52] MAP GENERATED : Map saved as 'zumi_map.png'
+[2025-06-06 13:26:46] MISSION : Starting main loop
+[2025-06-06 13:26:47] OBJECT DETECTED : Total objects so far: 0
+[2025-06-06 13:26:56] QR DETECTED : Code:1x 360ｰ left, emotion: zumi is happy today!
+[2025-06-06 13:26:58] QR ACTION : Processing complex command: 1x 360ｰ left, emotion: zumi is happy today!
+[2025-06-06 13:27:00] QR ACTION : Executing: happy emotion and exit
+[2025-06-06 13:27:05] OBJECT INTERACTION : Duration: 18.48192 seconds
+[2025-06-06 13:27:08] TURN : Direction: R, Duration in horizontal: 2.192286968231201s
+[2025-06-06 13:27:10] TURN : Direction: L, Duration in vertical: 2.3203349113464355s
+[2025-06-06 13:27:15] OBJECT DETECTED : Total objects so far: 0
+[2025-06-06 13:27:27] DETECTION ATTEMPT : No QR or Face detected
+[2025-06-06 13:27:27] OBJECT INTERACTION : Duration: 12.164429 seconds
+[2025-06-06 13:27:29] TURN : Direction: L, Duration in vertical: 2.1148924827575684s
+[2025-06-06 13:27:33] TURN : Direction: R, Duration in horizontal: 3.5399398803710938s
+[2025-06-06 13:27:34] OBJECT DETECTED : Total objects so far: 1
+[2025-06-06 13:27:43] QR DETECTED : Code:2x 360ｰ right, emotion: none
+[2025-06-06 13:27:45] QR ACTION : Processing complex command: 2x 360ｰ right, emotion: none
+[2025-06-06 13:27:52] OBJECT INTERACTION : Duration: 17.643618 seconds
+[2025-06-06 13:27:54] TURN : Direction: R, Duration in horizontal: 2.1383063793182373s
+[2025-06-06 13:27:55] OBJECT DETECTED : Total objects so far: 1
+[2025-06-06 13:28:06] DETECTION ATTEMPT : No QR or Face detected
+[2025-06-06 13:28:06] OBJECT INTERACTION : Duration: 11.84941 seconds
+[2025-06-06 13:28:10] TURN : Direction: L, Duration in horizontal: 3.453678607940674s
+[2025-06-06 13:28:11] OBJECT DETECTED : Total objects so far: 2
+[2025-06-06 13:28:20] QR DETECTED : Code:zumi is angry today!
+[2025-06-06 13:28:22] QR ACTION : Executing: angry emotion and exit
+[2025-06-06 13:28:22] MISSION : Exiting main loop due to QR command
+[2025-06-06 13:28:26] MAP GENERATED : Map saved as 'zumi_map.png'
 
 === MISSION SUMMARY ===
-Mission End: 2025-06-06 13:23:52
-Mission Duration: 124.747365 seconds
+Mission End: 2025-06-06 13:28:26
+Mission Duration: 100.041715 seconds
 
 --- OBJECT STATISTICS ---
-Total Objects Detected: 4
+Total Objects Detected: 2
 Total Faces Detected: 0
 
 --- PATH STATISTICS ---
-Total Turns: 1
-Horizontal Distance: 75.675208568573 units
-Vertical Distance: 70.81721782684326units
-Manhattan Distance: 146.49242639541626 units
+Total Turns: 6
+Horizontal Distance: 160.4212236404419 units
+Vertical Distance: 89.88442897796631units
+Manhattan Distance: 250.3056526184082 units
