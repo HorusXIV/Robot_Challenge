@@ -1,31 +1,27 @@
 === ZUMI ROBOT MISSION LOG ===
-Mission Start: 2025-06-06 12:52:40
+Mission Start: 2025-06-06 13:08:02
 
-[2025-06-06 12:52:40] MISSION : Starting main loop
-[2025-06-06 12:52:44] TURN : Direction: R, Duration in vertical: 4.398415803909302s
-[2025-06-06 12:52:46] OBJECT DETECTED : Total objects so far: 0
-[2025-06-06 12:52:58] FACE DETECTED : Total faces so far: 1
-[2025-06-06 12:53:01] OBJECT INTERACTION : Duration: 15.124092 seconds
-[2025-06-06 12:53:07] TURN : Direction: R, Duration in vertical: 5.584785223007202s
-[2025-06-06 12:53:09] OBJECT DETECTED : Total objects so far: 0
-[2025-06-06 12:53:21] DETECTION ATTEMPT : No QR or Face detected
-[2025-06-06 12:53:21] OBJECT INTERACTION : Duration: 12.230551 seconds
-[2025-06-06 12:53:22] OBJECT DETECTED : Total objects so far: 1
-[2025-06-06 12:53:31] QR DETECTED : Code:zumi is angry today!
-[2025-06-06 12:53:33] QR ACTION : Executing: angry emotion and exit
-[2025-06-06 12:53:33] MISSION : Exiting main loop due to QR command
-[2025-06-06 12:53:37] MAP GENERATED : Map saved as 'zumi_map.png'
+[2025-06-06 13:08:02] MISSION : Starting main loop
+[2025-06-06 13:08:07] TURN : Direction: R, Duration in vertical: 4.293962717056274s
+[2025-06-06 13:08:14] TURN : Direction: L, Duration in horizontal: 7.353921175003052s
+[2025-06-06 13:08:18] TURN : Direction: L, Duration in vertical: 4.288009405136108s
+[2025-06-06 13:08:27] TURN : Direction: L, Duration in horizontal: 8.947052001953125s
+[2025-06-06 13:08:32] OBJECT DETECTED : Total objects so far: 0
+[2025-06-06 13:08:41] QR DETECTED : Code:zumi is angry today!
+[2025-06-06 13:08:43] QR ACTION : Executing: angry emotion and exit
+[2025-06-06 13:08:43] MISSION : Exiting main loop due to QR command
+[2025-06-06 13:08:46] MAP GENERATED : Map saved as 'zumi_map.png'
 
 === MISSION SUMMARY ===
-Mission End: 2025-06-06 12:53:37
-Mission Duration: 57.261518 seconds
+Mission End: 2025-06-06 13:08:46
+Mission Duration: 43.909007 seconds
 
 --- OBJECT STATISTICS ---
-Total Objects Detected: 1
-Total Faces Detected: 1
+Total Objects Detected: 0
+Total Faces Detected: 0
 
 --- PATH STATISTICS ---
-Total Turns: 2
-Horizontal Distance: 34.68574285507202 units
-Vertical Distance: 110.15645265579224units
-Manhattan Distance: 144.84219551086426 units
+Total Turns: 4
+Horizontal Distance: 163.02539110183716 units
+Vertical Distance: 132.50698566436768units
+Manhattan Distance: 295.53237676620483 units
