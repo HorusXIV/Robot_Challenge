@@ -1,25 +1,32 @@
 === ZUMI ROBOT MISSION LOG ===
-Mission Start: 2025-06-06 13:09:06
+Mission Start: 2025-06-06 13:10:05
 
-[2025-06-06 13:09:06] MISSION : Starting main loop
-[2025-06-06 13:09:10] TURN : Direction: R, Duration in vertical: 4.041474103927612s
-[2025-06-06 13:09:17] TURN : Direction: R, Duration in horizontal: 7.0589680671691895s
-[2025-06-06 13:09:20] OBJECT DETECTED : Total objects so far: 0
-[2025-06-06 13:09:29] QR DETECTED : Code:zumi is angry today!
-[2025-06-06 13:09:31] QR ACTION : Executing: angry emotion and exit
-[2025-06-06 13:09:32] MISSION : Exiting main loop due to QR command
-[2025-06-06 13:09:35] MAP GENERATED : Map saved as 'zumi_map.png'
+[2025-06-06 13:10:05] MISSION : Starting main loop
+[2025-06-06 13:10:08] TURN : Direction: L, Duration in vertical: 3.075284004211426s
+[2025-06-06 13:10:17] TURN : Direction: L, Duration in horizontal: 9.199750900268555s
+[2025-06-06 13:10:20] OBJECT DETECTED : Total objects so far: 0
+[2025-06-06 13:10:32] DETECTION ATTEMPT : No QR or Face detected
+[2025-06-06 13:10:32] OBJECT INTERACTION : Duration: 12.042964 seconds
+[2025-06-06 13:10:34] TURN : Direction: L, Duration in horizontal: 2.2267746925354004s
+[2025-06-06 13:10:36] OBJECT DETECTED : Total objects so far: 1
+[2025-06-06 13:10:48] DETECTION ATTEMPT : No QR or Face detected
+[2025-06-06 13:10:48] OBJECT INTERACTION : Duration: 11.923928 seconds
+[2025-06-06 13:10:50] OBJECT DETECTED : Total objects so far: 2
+[2025-06-06 13:10:59] QR DETECTED : Code:zumi is angry today!
+[2025-06-06 13:11:01] QR ACTION : Executing: angry emotion and exit
+[2025-06-06 13:11:02] MISSION : Exiting main loop due to QR command
+[2025-06-06 13:11:05] MAP GENERATED : Map saved as 'zumi_map.png'
 
 === MISSION SUMMARY ===
-Mission End: 2025-06-06 13:09:35
-Mission Duration: 29.514861 seconds
+Mission End: 2025-06-06 13:11:05
+Mission Duration: 60.225745 seconds
 
 --- OBJECT STATISTICS ---
-Total Objects Detected: 0
+Total Objects Detected: 2
 Total Faces Detected: 0
 
 --- PATH STATISTICS ---
-Total Turns: 2
-Horizontal Distance: 70.60642957687378 units
-Vertical Distance: 74.47153568267822units
-Manhattan Distance: 145.077965259552 units
+Total Turns: 3
+Horizontal Distance: 130.6826663017273 units
+Vertical Distance: 77.00268745422363units
+Manhattan Distance: 207.68535375595093 units
