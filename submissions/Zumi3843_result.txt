@@ -1,16 +1,16 @@
 === ZUMI ROBOT MISSION LOG ===
-Mission Start: 2025-06-07 16:50:33
+Mission Start: 2025-06-07 16:54:55
 
-[2025-06-07 16:50:33] MISSION : Starting main loop
-[2025-06-07 16:50:34] OBJECT DETECTED : Total objects so far: 0
-[2025-06-07 16:50:42] QR DETECTED : Code:zumi is angry today!
-[2025-06-07 16:50:44] QR ACTION : Executing: angry emotion and exit
-[2025-06-07 16:50:45] MISSION : Exiting main loop due to QR command
-[2025-06-07 16:50:48] MAP GENERATED : Map saved as 'zumi_map.png'
+[2025-06-07 16:54:55] MISSION : Starting main loop
+[2025-06-07 16:54:56] OBJECT DETECTED : Total objects so far: 0
+[2025-06-07 16:55:05] QR DETECTED : Code:zumi is celebrating today!
+[2025-06-07 16:55:07] QR ACTION : Executing: celebrate emotion and exit
+[2025-06-07 16:55:10] MISSION : Exiting main loop due to QR command
+[2025-06-07 16:55:13] MAP GENERATED : Map saved as 'zumi_map.png'
 
 === MISSION SUMMARY ===
-Mission End: 2025-06-07 16:50:48
-Mission Duration: 0 minutes 15 seconds
+Mission End: 2025-06-07 16:55:13
+Mission Duration: 0 minutes 17 seconds
 
 --- OBJECT STATISTICS ---
 Total Objects Detected: 0
@@ -18,6 +18,6 @@ Total Faces Detected: 0
 
 --- PATH STATISTICS ---
 Total Turns: 0
-Horizontal Distance: 0.01595020294189453 units
-Vertical Distance: 7.301778793334961units
-Manhattan Distance: 7.3177289962768555 units
+Horizontal Distance: 0.03946065902709961 units
+Vertical Distance: 7.394952774047852units
+Manhattan Distance: 7.434413433074951 units
