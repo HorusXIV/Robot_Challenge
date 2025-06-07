@@ -1,23 +1,33 @@
 === ZUMI ROBOT MISSION LOG ===
-Mission Start: 2025-06-07 17:08:59
+Mission Start: 2025-06-07 17:10:24
 
-[2025-06-07 17:08:59] MISSION : Starting main loop
-[2025-06-07 17:09:00] OBJECT DETECTED : Total objects so far: 0
-[2025-06-07 17:09:09] QR DETECTED : Code:zumi is celebrating today!
-[2025-06-07 17:09:11] QR ACTION : Executing: celebrate emotion and exit
-[2025-06-07 17:09:13] MISSION : Exiting main loop due to QR command
-[2025-06-07 17:09:17] MAP GENERATED : Map saved as 'zumi_map.png'
+[2025-06-07 17:10:24] MISSION : Starting main loop
+[2025-06-07 17:10:25] OBJECT DETECTED : Total objects so far: 0
+[2025-06-07 17:10:37] DETECTION ATTEMPT : No QR or Face detected (object_counter: 0)
+[2025-06-07 17:10:37] OBJECT INTERACTION : Duration: 12.064948 seconds
+[2025-06-07 17:10:39] OBJECT DETECTED : Total objects so far: 1
+[2025-06-07 17:10:52] DETECTION ATTEMPT : No QR or Face detected (object_counter: 1)
+[2025-06-07 17:10:52] OBJECT INTERACTION : Duration: 12.208733 seconds
+[2025-06-07 17:10:54] OBJECT DETECTED : Total objects so far: 2
+[2025-06-07 17:11:06] FACE DETECTED : Total faces so far: 1
+[2025-06-07 17:11:09] OBJECT INTERACTION : Duration: 14.890752 seconds
+[2025-06-07 17:11:11] TURN : Direction: R, Duration in horizontal: 2.176398754119873s
+[2025-06-07 17:11:12] OBJECT DETECTED : Total objects so far: 2
+[2025-06-07 17:11:21] QR DETECTED : Code:zumi is celebrating today!
+[2025-06-07 17:11:23] QR ACTION : Executing: celebrate emotion and exit
+[2025-06-07 17:11:25] MISSION : Exiting main loop due to QR command
+[2025-06-07 17:11:29] MAP GENERATED : Map saved as 'zumi_map.png'
 
 === MISSION SUMMARY ===
-Mission End: 2025-06-07 17:09:17
-Mission Duration: 0 minutes 17 seconds
+Mission End: 2025-06-07 17:11:29
+Mission Duration: 1 minutes 5 seconds
 
 --- OBJECT STATISTICS ---
-Total Objects Detected: 0
-Total Faces Detected: 0
+Total Objects Detected: 2
+Total Faces Detected: 1
 
 --- PATH STATISTICS ---
-Total Turns: 0
-Horizontal Distance: 0.015799999237060547 units
-Vertical Distance: 13.26692819595337units
-Manhattan Distance: 13.28272819519043 units
+Total Turns: 1
+Horizontal Distance: 49.76856470108032 units
+Vertical Distance: 38.325419425964355units
+Manhattan Distance: 88.09398412704468 units
