@@ -1,29 +1,31 @@
 === ZUMI ROBOT MISSION LOG ===
-Mission Start: 2025-06-07 17:16:15
+Mission Start: 2025-06-07 17:21:47
 
-[2025-06-07 17:16:15] MISSION : Starting main loop
-[2025-06-07 17:16:15] OBJECT DETECTED : Total objects so far: 0
-[2025-06-07 17:16:28] DETECTION ATTEMPT : No QR or Face detected (object_counter: 0)
-[2025-06-07 17:16:28] OBJECT INTERACTION : Duration: 12.942916 seconds
-[2025-06-07 17:16:29] OBJECT DETECTED : Total objects so far: 1
-[2025-06-07 17:16:41] FACE DETECTED : Total faces so far: 1
-[2025-06-07 17:16:44] OBJECT INTERACTION : Duration: 15.276419 seconds
-[2025-06-07 17:16:46] OBJECT DETECTED : Total objects so far: 1
-[2025-06-07 17:16:54] QR DETECTED : Code:zumi is celebrating today!
-[2025-06-07 17:16:56] QR ACTION : Executing: celebrate emotion and exit
-[2025-06-07 17:16:59] MISSION : Exiting main loop due to QR command
-[2025-06-07 17:17:02] MAP GENERATED : Map saved as 'zumi_map.png'
+[2025-06-07 17:21:47] MISSION : Starting main loop
+[2025-06-07 17:21:48] OBJECT DETECTED : Total objects so far: 0
+[2025-06-07 17:22:00] DETECTION ATTEMPT : No QR or Face detected (object_counter: 0)
+[2025-06-07 17:22:00] OBJECT INTERACTION : Duration: 12.030736 seconds
+[2025-06-07 17:22:04] TURN : Direction: R, Duration in horizontal: 3.720346689224243s
+[2025-06-07 17:22:05] OBJECT DETECTED : Total objects so far: 1
+[2025-06-07 17:22:13] QR DETECTED : Code:2x 360ｰ right, emotion: none
+[2025-06-07 17:22:15] QR ACTION : Processing complex command: 2x 360ｰ right, emotion: none
+[2025-06-07 17:22:21] OBJECT INTERACTION : Duration: 16.277224 seconds
+[2025-06-07 17:22:25] OBJECT DETECTED : Total objects so far: 1
+[2025-06-07 17:22:33] QR DETECTED : Code:zumi is celebrating today!
+[2025-06-07 17:22:35] QR ACTION: :  celebrate emotion and exit
+[2025-06-07 17:22:38] MISSION : Exiting main loop due to QR command
+[2025-06-07 17:22:41] MAP GENERATED : Map saved as 'zumi_map.png'
 
 === MISSION SUMMARY ===
-Mission End: 2025-06-07 17:17:02
-Mission Duration: 0 minutes 46 seconds
+Mission End: 2025-06-07 17:22:41
+Mission Duration: 0 minutes 53 seconds
 
 --- OBJECT STATISTICS ---
 Total Objects Detected: 1
-Total Faces Detected: 1
+Total Faces Detected: 0
 
 --- PATH STATISTICS ---
-Total Turns: 0
-Horizontal Distance: 5.179939270019531 units
-Vertical Distance: 17.371368408203125units
-Manhattan Distance: 22.551307678222656 units
+Total Turns: 1
+Horizontal Distance: 74.05170917510986 units
+Vertical Distance: 16.68731451034546units
+Manhattan Distance: 90.73902368545532 units
