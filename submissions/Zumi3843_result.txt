@@ -1,31 +1,48 @@
 === ZUMI ROBOT MISSION LOG ===
-Mission Start: 2025-06-07 17:21:47
+Mission Start: 2025-06-07 17:30:41
 
-[2025-06-07 17:21:47] MISSION : Starting main loop
-[2025-06-07 17:21:48] OBJECT DETECTED : Total objects so far: 0
-[2025-06-07 17:22:00] DETECTION ATTEMPT : No QR or Face detected (object_counter: 0)
-[2025-06-07 17:22:00] OBJECT INTERACTION : Duration: 12.030736 seconds
-[2025-06-07 17:22:04] TURN : Direction: R, Duration in horizontal: 3.720346689224243s
-[2025-06-07 17:22:05] OBJECT DETECTED : Total objects so far: 1
-[2025-06-07 17:22:13] QR DETECTED : Code:2x 360ｰ right, emotion: none
-[2025-06-07 17:22:15] QR ACTION : Processing complex command: 2x 360ｰ right, emotion: none
-[2025-06-07 17:22:21] OBJECT INTERACTION : Duration: 16.277224 seconds
-[2025-06-07 17:22:25] OBJECT DETECTED : Total objects so far: 1
-[2025-06-07 17:22:33] QR DETECTED : Code:zumi is celebrating today!
-[2025-06-07 17:22:35] QR ACTION: :  celebrate emotion and exit
-[2025-06-07 17:22:38] MISSION : Exiting main loop due to QR command
-[2025-06-07 17:22:41] MAP GENERATED : Map saved as 'zumi_map.png'
+[2025-06-07 17:30:41] MISSION : Starting main loop
+[2025-06-07 17:30:42] OBJECT DETECTED : Total objects so far: 0
+[2025-06-07 17:30:55] DETECTION ATTEMPT : No QR or Face detected (object_counter: 0)
+[2025-06-07 17:30:55] OBJECT INTERACTION : Duration: 12.086848 seconds
+[2025-06-07 17:30:56] OBJECT DETECTED : Total objects so far: 1
+[2025-06-07 17:31:09] DETECTION ATTEMPT : No QR or Face detected (object_counter: 1)
+[2025-06-07 17:31:09] OBJECT INTERACTION : Duration: 12.058305 seconds
+[2025-06-07 17:31:10] OBJECT DETECTED : Total objects so far: 2
+[2025-06-07 17:31:22] FACE DETECTED : Total faces so far: 1
+[2025-06-07 17:31:24] OBJECT INTERACTION : Duration: 14.906856 seconds
+[2025-06-07 17:31:27] TURN : Direction: R, Duration in horizontal: 2.2673451900482178s
+[2025-06-07 17:31:30] OBJECT DETECTED : Total objects so far: 2
+[2025-06-07 17:31:38] QR DETECTED : Code:right circle
+[2025-06-07 17:31:40] QR ACTION : right circle with1laps
+[2025-06-07 17:31:40] ROUNDABOUT : Entering right roundabout with 1 rounds
+[2025-06-07 17:31:41] TURN : Direction: R, Duration in horizontal: 0.4503188133239746s
+[2025-06-07 17:31:44] TURN : Direction: R, Duration in vertical: 2.79701828956604s
+[2025-06-07 17:31:46] TURN : Direction: R, Duration in horizontal: 2.6768152713775635s
+[2025-06-07 17:31:49] TURN : Direction: R, Duration in vertical: 2.626573324203491s
+[2025-06-07 17:31:52] ROUNDABOUT : Completed 1 of 1 circles
+[2025-06-07 17:31:52] TURN : Direction: L, Duration in horizontal: 2.623187303543091s
+[2025-06-07 17:31:53] ROUNDABOUT : Exiting right roundabout after 1 rounds
+[2025-06-07 17:31:53] OBJECT INTERACTION : Duration: 23.018346 seconds
+[2025-06-07 17:31:56] TURN : Direction: R, Duration in vertical: 3.0843284130096436s
+[2025-06-07 17:31:59] TURN : Direction: R, Duration in horizontal: 3.3155517578125s
+[2025-06-07 17:32:06] TURN : Direction: L, Duration in vertical: 7.028176784515381s
+[2025-06-07 17:32:09] OBJECT DETECTED : Total objects so far: 2
+[2025-06-07 17:32:17] QR DETECTED : Code:zumi is celebrating today!
+[2025-06-07 17:32:19] QR ACTION : celebrate emotion and exit
+[2025-06-07 17:32:22] MISSION : Exiting main loop due to QR command
+[2025-06-07 17:32:25] MAP GENERATED : Map saved as 'zumi_map.png'
 
 === MISSION SUMMARY ===
-Mission End: 2025-06-07 17:22:41
-Mission Duration: 0 minutes 53 seconds
+Mission End: 2025-06-07 17:32:25
+Mission Duration: 1 minutes 44 seconds
 
 --- OBJECT STATISTICS ---
-Total Objects Detected: 1
-Total Faces Detected: 0
+Total Objects Detected: 2
+Total Faces Detected: 1
 
 --- PATH STATISTICS ---
-Total Turns: 1
-Horizontal Distance: 74.05170917510986 units
-Vertical Distance: 16.68731451034546units
-Manhattan Distance: 90.73902368545532 units
+Total Turns: 9
+Horizontal Distance: 156.83248043060303 units
+Vertical Distance: 211.51925086975098units
+Manhattan Distance: 368.351731300354 units
