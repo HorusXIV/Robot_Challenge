@@ -1,36 +1,31 @@
 === ZUMI ROBOT MISSION LOG ===
-Mission Start: 2025-06-08 13:57:52
+Mission Start: 2025-06-08 14:12:39
 
-[2025-06-08 13:57:52] MISSION : Starting main loop
-[2025-06-08 13:57:55] TURN : Direction: L, Duration in vertical: 2.84s
-[2025-06-08 13:57:58] OBJECT DETECTED : Searching for QR or Face
-[2025-06-08 13:58:03] DISPLAY : Displaying 'Object detected!' message
-[2025-06-08 13:58:03] DISPLAY : Displaying Happy emotion
-[2025-06-08 13:58:11] QR DETECTED : '1x 360ｰ left, emotion: zumi is happy today!'
-[2025-06-08 13:58:13] QR ACTION : Processing complex command: 1x 360ｰ left, emotion: zumi is happy today!
-[2025-06-08 13:58:13] SPINNING TRICK : Starting Spinning Trick
-[2025-06-08 13:58:15] SPINNING TRICK : Number of Spins: 1
-[2025-06-08 13:58:18] SPINNING TRICK : Emotion to Display: zumi is happy today!
-[2025-06-08 13:58:19] SPINNING TRICK : Ending Spinning Trick
-[2025-06-08 13:58:19] OBJECT INTERACTION : Duration: 20.90s
-[2025-06-08 13:58:21] OBJECT DETECTED : Searching for QR or Face
-[2025-06-08 13:58:26] DISPLAY : Displaying 'Object detected!' message
-[2025-06-08 13:58:26] DISPLAY : Displaying Happy emotion
-[2025-06-08 13:58:34] QR DETECTED : 'zumi is celebrating today!'
-[2025-06-08 13:58:36] QR ACTION : celebrate emotion and exit
-[2025-06-08 13:58:38] MISSION : Exiting main loop due to QR command
-[2025-06-08 13:58:42] MAP GENERATED : Map saved as 'zumi_map.png'
+[2025-06-08 14:12:39] MISSION : Starting main loop
+[2025-06-08 14:12:44] OBJECT DETECTED : Searching for QR or Face
+[2025-06-08 14:12:49] DISPLAY : Displaying 'Object detected!' message
+[2025-06-08 14:12:49] DISPLAY : Displaying Happy emotion
+[2025-06-08 14:13:00] FACE DETECTED : Total faces so far: 1
+[2025-06-08 14:13:03] OBJECT INTERACTION : Duration: 19.15s
+[2025-06-08 14:13:05] TURN : Direction: R, Duration in horizontal: 2.20s
+[2025-06-08 14:13:06] OBJECT DETECTED : Searching for QR or Face
+[2025-06-08 14:13:11] DISPLAY : Displaying 'Object detected!' message
+[2025-06-08 14:13:11] DISPLAY : Displaying Happy emotion
+[2025-06-08 14:13:19] QR DETECTED : 'zumi is celebrating today!'
+[2025-06-08 14:13:21] QR ACTION : celebrate emotion and exit
+[2025-06-08 14:13:23] MISSION : Exiting main loop due to QR command
+[2025-06-08 14:13:27] MAP GENERATED : Map saved as 'zumi_map.png'
 
 === MISSION SUMMARY ===
-Mission End: 2025-06-08 13:58:42
-Mission Duration: 0 minutes 50 seconds
+Mission End: 2025-06-08 14:13:27
+Mission Duration: 0 minutes 48 seconds
 
 --- OBJECT STATISTICS ---
 Total Objects Detected: 0
-Total Faces Detected: 0
+Total Faces Detected: 1
 
 --- PATH STATISTICS ---
 Total Turns: 1
-Horizontal Distance: 31.94382905960083 units
-Vertical Distance: 52.83421516418457 units
-Manhattan Distance: 84.7780442237854 units
+Horizontal Distance: 21.972017288208008 units
+Vertical Distance: 53.838772773742676 units
+Manhattan Distance: 75.81079006195068 units
