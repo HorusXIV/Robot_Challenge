@@ -1,31 +1,49 @@
 === ZUMI ROBOT MISSION LOG ===
-Mission Start: 2025-06-08 14:17:57
+Mission Start: 2025-06-08 14:21:51
 
-[2025-06-08 14:17:57] MISSION : Starting main loop
-[2025-06-08 14:18:02] OBJECT DETECTED : Searching for QR or Face
-[2025-06-08 14:18:08] DISPLAY : Displaying 'Object detected!' message
-[2025-06-08 14:18:08] DISPLAY : Displaying Happy emotion
-[2025-06-08 14:18:19] FACE DETECTED : Total faces so far: 1
-[2025-06-08 14:18:22] OBJECT INTERACTION : Duration: 19.09s
-[2025-06-08 14:18:24] TURN : Direction: R, Duration in horizontal: 2.47s
-[2025-06-08 14:18:24] OBJECT DETECTED : Searching for QR or Face
-[2025-06-08 14:18:30] DISPLAY : Displaying 'Object detected!' message
-[2025-06-08 14:18:30] DISPLAY : Displaying Happy emotion
-[2025-06-08 14:18:38] QR DETECTED : 'zumi is angry today!'
-[2025-06-08 14:18:40] QR ACTION : angry emotion and exit
-[2025-06-08 14:18:40] MISSION : Exiting main loop due to QR command
-[2025-06-08 14:18:43] MAP GENERATED : Map saved as 'zumi_map.png'
+[2025-06-08 14:21:51] MISSION : Starting main loop
+[2025-06-08 14:21:55] OBJECT DETECTED : Searching for QR or Face
+[2025-06-08 14:22:00] DISPLAY : Displaying 'Object detected!' message
+[2025-06-08 14:22:00] DISPLAY : Displaying Happy emotion
+[2025-06-08 14:22:11] FACE DETECTED : Total faces so far: 1
+[2025-06-08 14:22:14] OBJECT INTERACTION : Duration: 18.90s
+[2025-06-08 14:22:16] OBJECT DETECTED : Searching for QR or Face
+[2025-06-08 14:22:21] DISPLAY : Displaying 'Object detected!' message
+[2025-06-08 14:22:21] DISPLAY : Displaying Happy emotion
+[2025-06-08 14:22:32] FACE DETECTED : Total faces so far: 2
+[2025-06-08 14:22:34] OBJECT INTERACTION : Duration: 18.60s
+[2025-06-08 14:22:36] TURN : Direction: R, Duration in vertical: 1.90s
+[2025-06-08 14:22:37] OBJECT DETECTED : Searching for QR or Face
+[2025-06-08 14:22:42] DISPLAY : Displaying 'Object detected!' message
+[2025-06-08 14:22:42] DISPLAY : Displaying Happy emotion
+[2025-06-08 14:22:53] DETECTION ATTEMPT : No QR or Face detected
+[2025-06-08 14:22:53] OBJECT COUNTER : 1
+[2025-06-08 14:22:53] OBJECT INTERACTION : Duration: 16.16s
+[2025-06-08 14:22:54] OBJECT DETECTED : Searching for QR or Face
+[2025-06-08 14:22:59] DISPLAY : Displaying 'Object detected!' message
+[2025-06-08 14:22:59] DISPLAY : Displaying Happy emotion
+[2025-06-08 14:23:10] DETECTION ATTEMPT : No QR or Face detected
+[2025-06-08 14:23:10] OBJECT COUNTER : 2
+[2025-06-08 14:23:10] OBJECT INTERACTION : Duration: 16.13s
+[2025-06-08 14:23:13] TURN : Direction: R, Duration in horizontal: 3.16s
+[2025-06-08 14:23:14] OBJECT DETECTED : Searching for QR or Face
+[2025-06-08 14:23:19] DISPLAY : Displaying 'Object detected!' message
+[2025-06-08 14:23:19] DISPLAY : Displaying Happy emotion
+[2025-06-08 14:23:27] QR DETECTED : 'zumi is angry today!'
+[2025-06-08 14:23:29] QR ACTION : angry emotion and exit
+[2025-06-08 14:23:29] MISSION : Exiting main loop due to QR command
+[2025-06-08 14:23:32] MAP GENERATED : Map saved as 'zumi_map.png'
 
 === MISSION SUMMARY ===
-Mission End: 2025-06-08 14:18:43
-Mission Duration: 0 minutes 45 seconds
+Mission End: 2025-06-08 14:23:32
+Mission Duration: 1 minutes 40 seconds
 
 --- OBJECT STATISTICS ---
-Total Objects Detected: 0
-Total Faces Detected: 1
+Total Objects Detected: 2
+Total Faces Detected: 2
 
 --- PATH STATISTICS ---
-Total Turns: 1
-Horizontal Distance: 24.721169471740723 units
-Vertical Distance: 54.257004261016846 units
-Manhattan Distance: 78.97817373275757 units
+Total Turns: 2
+Horizontal Distance: 54.78 units
+Vertical Distance: 70.86 units
+Manhattan Distance: 125.64 units
