@@ -1,76 +1,51 @@
 === ZUMI ROBOT MISSION LOG ===
-Mission Start: 2025-06-08 15:03:12
+Mission Start: 2025-06-08 15:09:18
 
-[2025-06-08 15:03:12] MISSION : Starting main loop
-[2025-06-08 15:03:16] TURN : Direction: R, Duration in vertical: 4.14s
-[2025-06-08 15:03:20] OBJECT DETECTED : Searching for QR or Face
-[2025-06-08 15:03:26] DISPLAY : Displaying 'Object detected!' message
-[2025-06-08 15:03:26] DISPLAY : Displaying Happy emotion
-[2025-06-08 15:03:37] DETECTION ATTEMPT : No QR or Face detected
-[2025-06-08 15:03:37] OBJECT COUNTER : 1
-[2025-06-08 15:03:37] OBJECT INTERACTION : Duration: 17.22s
-[2025-06-08 15:03:38] OBJECT DETECTED : Searching for QR or Face
-[2025-06-08 15:03:43] DISPLAY : Displaying 'Object detected!' message
-[2025-06-08 15:03:43] DISPLAY : Displaying Happy emotion
-[2025-06-08 15:03:54] FACE DETECTED : Total faces so far: 1
-[2025-06-08 15:03:57] OBJECT INTERACTION : Duration: 19.02s
-[2025-06-08 15:03:59] TURN : Direction: R, Duration in horizontal: 2.43s
-[2025-06-08 15:04:00] OBJECT DETECTED : Searching for QR or Face
-[2025-06-08 15:04:05] DISPLAY : Displaying 'Object detected!' message
-[2025-06-08 15:04:05] DISPLAY : Displaying Happy emotion
-[2025-06-08 15:04:16] DETECTION ATTEMPT : No QR or Face detected
-[2025-06-08 15:04:16] OBJECT COUNTER : 2
-[2025-06-08 15:04:16] OBJECT INTERACTION : Duration: 15.71s
-[2025-06-08 15:04:18] OBJECT DETECTED : Searching for QR or Face
-[2025-06-08 15:04:24] DISPLAY : Displaying 'Object detected!' message
-[2025-06-08 15:04:24] DISPLAY : Displaying Happy emotion
-[2025-06-08 15:04:31] QR DETECTED : 'right circle'
-[2025-06-08 15:04:33] QR ACTION : right circle with 1 lap(s)
-[2025-06-08 15:04:33] ROUNDABOUT : Entering right roundabout with 1 round(s)
-[2025-06-08 15:04:34] TURN : Direction: R, Duration in vertical: 0.44s
-[2025-06-08 15:04:37] TURN : Direction: R, Duration in horizontal: 2.68s
-[2025-06-08 15:04:38] ROUNDABOUT : z-angle: -294.109
-[2025-06-08 15:04:39] TURN : Direction: R, Duration in vertical: 2.61s
-[2025-06-08 15:04:40] ROUNDABOUT : z-angle: -369.673
-[2025-06-08 15:04:42] TURN : Direction: R, Duration in horizontal: 2.55s
-[2025-06-08 15:04:43] ROUNDABOUT : z-angle: -444.727
-[2025-06-08 15:04:44] ROUNDABOUT : z-angle: -447.065
-[2025-06-08 15:04:44] ROUNDABOUT : Completed 1 of 1 circles
-[2025-06-08 15:04:44] TURN : Direction: L, Duration in vertical: 2.53s
-[2025-06-08 15:04:45] ROUNDABOUT : Exiting right roundabout after 1 rounds
-[2025-06-08 15:04:45] OBJECT INTERACTION : Duration: 27.05s
-[2025-06-08 15:04:48] TURN : Direction: L, Duration in horizontal: 3.10s
-[2025-06-08 15:04:57] TURN : Direction: L, Duration in vertical: 9.01s
-[2025-06-08 15:05:03] TURN : Direction: L, Duration in horizontal: 5.49s
-[2025-06-08 15:05:06] TURN : Direction: L, Duration in vertical: 3.58s
-[2025-06-08 15:05:09] OBJECT DETECTED : Searching for QR or Face
-[2025-06-08 15:05:14] DISPLAY : Displaying 'Object detected!' message
-[2025-06-08 15:05:14] DISPLAY : Displaying Happy emotion
-[2025-06-08 15:05:22] QR DETECTED : '1x 360ｰ left, emotion: zumi is happy today!'
-[2025-06-08 15:05:24] QR ACTION : Processing complex command: 1x 360ｰ left, emotion: zumi is happy today!
-[2025-06-08 15:05:24] SPINNING TRICK : Starting Spinning Trick
-[2025-06-08 15:05:26] SPINNING TRICK : Number of Spins: 1
-[2025-06-08 15:05:29] SPINNING TRICK : Emotion to Display: zumi is happy today!
-[2025-06-08 15:05:30] SPINNING TRICK : Ending Spinning Trick
-[2025-06-08 15:05:30] OBJECT INTERACTION : Duration: 21.40s
-[2025-06-08 15:05:32] OBJECT DETECTED : Searching for QR or Face
-[2025-06-08 15:05:37] DISPLAY : Displaying 'Object detected!' message
-[2025-06-08 15:05:37] DISPLAY : Displaying Happy emotion
-[2025-06-08 15:05:45] QR DETECTED : 'zumi is celebrating today!'
-[2025-06-08 15:05:47] QR ACTION : celebrate emotion and exit
-[2025-06-08 15:05:49] MISSION : Exiting main loop due to QR command
-[2025-06-08 15:05:52] MAP GENERATED : Map saved as 'zumi_map.png'
+[2025-06-08 15:09:18] MISSION : Starting main loop
+[2025-06-08 15:09:22] TURN : Direction: R, Duration in vertical: 4.18s
+[2025-06-08 15:09:24] OBJECT DETECTED : Searching for QR or Face
+[2025-06-08 15:09:29] DISPLAY : Displaying 'Object detected!' message
+[2025-06-08 15:09:29] DISPLAY : Displaying Happy emotion
+[2025-06-08 15:09:41] DETECTION ATTEMPT : No QR or Face detected
+[2025-06-08 15:09:41] OBJECT COUNTER : 1
+[2025-06-08 15:09:41] OBJECT INTERACTION : Duration: 16.43s
+[2025-06-08 15:09:46] TURN : Direction: R, Duration in vertical: 5.18s
+[2025-06-08 15:09:49] OBJECT DETECTED : Searching for QR or Face
+[2025-06-08 15:09:54] DISPLAY : Displaying 'Object detected!' message
+[2025-06-08 15:09:54] DISPLAY : Displaying Happy emotion
+[2025-06-08 15:10:02] QR DETECTED : 'right circle'
+[2025-06-08 15:10:04] QR ACTION : right circle with 1 lap(s)
+[2025-06-08 15:10:04] ROUNDABOUT : Entering right roundabout with 1 round(s)
+[2025-06-08 15:10:04] TURN : Direction: R, Duration in vertical: 0.44s
+[2025-06-08 15:10:07] ROUNDABOUT : z-angle: -215.656
+[2025-06-08 15:10:07] TURN : Direction: R, Duration in horizontal: 2.63s
+[2025-06-08 15:10:09] ROUNDABOUT : z-angle: -290.79
+[2025-06-08 15:10:09] TURN : Direction: R, Duration in vertical: 2.61s
+[2025-06-08 15:10:12] ROUNDABOUT : z-angle: -366.122
+[2025-06-08 15:10:12] TURN : Direction: R, Duration in horizontal: 2.74s
+[2025-06-08 15:10:14] ROUNDABOUT : z-angle: -440.903
+[2025-06-08 15:10:14] ROUNDABOUT : Completed 1 of 1 circles
+[2025-06-08 15:10:14] TURN : Direction: L, Duration in vertical: 2.53s
+[2025-06-08 15:10:16] ROUNDABOUT : Exiting right roundabout after 1 rounds
+[2025-06-08 15:10:16] OBJECT INTERACTION : Duration: 27.01s
+[2025-06-08 15:10:16] OBJECT DETECTED : Searching for QR or Face
+[2025-06-08 15:10:21] DISPLAY : Displaying 'Object detected!' message
+[2025-06-08 15:10:21] DISPLAY : Displaying Happy emotion
+[2025-06-08 15:10:29] QR DETECTED : 'zumi is celebrating today!'
+[2025-06-08 15:10:31] QR ACTION : celebrate emotion and exit
+[2025-06-08 15:10:33] MISSION : Exiting main loop due to QR command
+[2025-06-08 15:10:37] MAP GENERATED : Map saved as 'zumi_map.png'
 
 === MISSION SUMMARY ===
-Mission End: 2025-06-08 15:05:52
-Mission Duration: 2 minutes 39 seconds
+Mission End: 2025-06-08 15:10:37
+Mission Duration: 1 minutes 19 seconds
 
 --- OBJECT STATISTICS ---
-Total Objects Detected: 2
-Total Faces Detected: 1
+Total Objects Detected: 1
+Total Faces Detected: 0
 
 --- PATH STATISTICS ---
-Total Turns: 11
-Horizontal Distance: 245.90 units
-Vertical Distance: 254.92 units
-Manhattan Distance: 500.82 units
+Total Turns: 7
+Horizontal Distance: 109.29 units
+Vertical Distance: 149.45 units
+Manhattan Distance: 258.74 units
