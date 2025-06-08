@@ -21,6 +21,8 @@ screen = Screen()
 vision = Vision()
 # personality = Personality(zumi, screen)
 
+zumi.reset_gyro()
+
 # Zähler für entfernte Objekte
 object_counter = 0
 face_counter   = 0
@@ -59,7 +61,7 @@ def record_segment(next_turn):
     movement_log.append((current_direction, duration, next_turn))
     # Log the turn
     if next_turn:
-        log_event(log_file_path,"TURN", "Direction: " + str(next_turn) + ", Duration in " + str(current_direction) + ": " + str(duration) + "s")
+        log_event(log_file_path,"TURN", "Direction: " + str(next_turn) + ", Duration in " + str(current_direction) + ": " + "{:.2f}".format(duration) + "s")
     # Toggle Achse
     current_direction = 'horizontal' if current_direction=='vertical' else 'vertical'
     last_dir_change_time = now
@@ -109,23 +111,26 @@ def cmd_right_circle():
     global last_dir_change_time
     last_dir_change_time = time.time()
 
-def cmd_happy_and_exit():
+def cmd_happy_and_exit(log_it=True):
     print("QR ACTION: happy emotion and exit")
-    log_event(log_file_path,"QR ACTION", "happy emotion and exit")
+    if log_it:
+        log_event(log_file_path,"QR ACTION", "happy emotion and exit")
     screen.happy()
     zumi.stop()
     return "exit"
 
-def cmd_angry_and_exit():
+def cmd_angry_and_exit(log_it=True):
     print("QR ACTION: angry emotion and exit")
-    log_event(log_file_path,"QR ACTION", "angry emotion and exit")
+    if log_it:
+        log_event(log_file_path,"QR ACTION", "angry emotion and exit")
     screen.angry()
     zumi.stop()
     return "exit"
 
-def cmd_celebrate_and_exit():
+def cmd_celebrate_and_exit(log_it=True):
     print("QR ACTION: celebrate emotion and exit")
-    log_event(log_file_path,"QR ACTION", "celebrate emotion and exit")
+    if log_it:
+        log_event(log_file_path,"QR ACTION", "celebrate emotion and exit")
     # personality.celebrate() # Uncomment if using Personality
     if hasattr(screen, 'celebrate'):
         screen.celebrate()
@@ -163,6 +168,8 @@ def cmd_unknown():
         count = int(spin_part.split("x",1)[0])
         direction = "left" if "left" in spin_part else "right"
 
+        log_event(log_file_path,"SPINNING TRICK", "Starting Spinning Trick")
+
         zumi.forward(speed=10, duration=0.4)
 
         # Spins ausführen
@@ -171,6 +178,8 @@ def cmd_unknown():
                 zumi.turn_left(360, 2)
             else:
                 zumi.turn_right(360, 2)
+        
+        log_event(log_file_path,"SPINNING TRICK", "Number of Spins: " + str(count))
 
         # Emotion anzeigen, aber nicht stoppen
         emo = emotion_part.split(":",1)[1].strip()
@@ -178,12 +187,15 @@ def cmd_unknown():
             # vorhandenen Handler holen
             handler = qr_actions.get(emo, None)
             if handler:
-                handler()
+                handler(log_it=False)
+
+        log_event(log_file_path,"SPINNING TRICK", "Emotion to Display: " + str(emo))
 
         # Geradeaus über die weisse Fläche laufen lassen, bis die Linie wieder auftaucht
         zumi.forward(speed=10, duration=1)
         drive_straight_until_line()
-
+        
+        log_event(log_file_path,"SPINNING TRICK", "Ending Spinning Trick")
         # Timer-Reset, damit kein Geisterweg auf Plot entsteht
         last_dir_change_time = time.time()
 
@@ -219,6 +231,7 @@ def linefolower_ir(bottom_right, bottom_left, threshold):
 
 def right_roundabout(num_rounds):
     log_event(log_file_path,"ROUNDABOUT", "Entering right roundabout with " + str(num_rounds) + " round(s)")
+    log_event(log_file_path,"ROUNDABOUT", "z-angle: " + str(zumi.read_z_angle()))
     zumi.forward(speed=10, duration=0.4)
     record_segment('R')
     zumi.turn_right(75)
@@ -237,8 +250,10 @@ def right_roundabout(num_rounds):
                 circled += 1
                 log_event(log_file_path,"ROUNDABOUT", "Completed " + str(circled) + " of " + str(num_rounds) + " circles")
             else:
+                log_event(log_file_path,"ROUNDABOUT", "z-angle: " + str(zumi.read_z_angle()))
                 record_segment('R')
                 zumi.turn_right(75)
+                
                 turns_taken += 1
         else:
             linefolower_ir(bottom_right, bottom_left, threshold)
@@ -246,7 +261,7 @@ def right_roundabout(num_rounds):
             print("Rounds completed:", circled)
             record_segment('L')
             zumi.turn_left(75)
-            log_event(log_file_path,"ROUNDABOUT", "Exiting right roundabout after " + str(circled) + " rounds")
+            log_event(log_file_path,"ROUNDABOUT", "Exiting right roundabout after " + str(circled) + " round(s)")
             break
 
 
@@ -330,7 +345,7 @@ def detect_and_log_face():
     if loc:
         x,y,w,h = loc
         cv2.rectangle(frame, (x,y), (x+w,y+h), (255,0,0), 2)
-        fname = "sumbissions/faces/face_{}.png".format(ts)
+        fname = "submissions/faces/face_{}.png".format(ts)
         cv2.imwrite(fname, frame)
         face_counter += 1
         log_event(log_file_path,"FACE DETECTED", "Total faces so far: " + str(face_counter) + "")
@@ -375,6 +390,11 @@ while True:
         zumi.play_note(Note.C6, 200)
 
         screen.draw_text_center('Object detected!',font_size=15)
+        time.sleep(2)
+        screen.happy()
+
+        log_event(log_file_path,"DISPLAY", "Displaying 'Object detected!' message")
+        log_event(log_file_path,"DISPLAY", "Displaying Happy emotion")
         print("Object detected – trying to detect QR-Code...")
 
         time.sleep(2)
@@ -407,7 +427,7 @@ while True:
                 
         # Log object interaction duration
         object_duration = (datetime.now() - object_detect_time).total_seconds()
-        log_event(log_file_path,"OBJECT INTERACTION", "Duration: " + str(object_duration) + " seconds")
+        log_event(log_file_path,"OBJECT INTERACTION", "Duration: " + "{:.2f}".format(object_duration) + "s")
 
         # begin timeout for object‐clearing
         start_wait = time.time()
@@ -471,8 +491,8 @@ v_dist = v_dur * speed_cm_per_s
 manhattan_dist = h_dist + v_dist
 
 manhattan_result = (
-    "Estimated Manhattan distance: {} units "
-    "(horizontally: {} units, vertically: {} units)"
+    "Estimated Manhattan distance: {:.2f} units "
+    "(horizontally: {:.2f} units, vertically: {:.2f} units)"
     .format(manhattan_dist, h_dist, v_dist)
 )
 print(manhattan_result)
@@ -539,8 +559,8 @@ with open(log_file_path, "a") as log_file:
     
     log_file.write("--- PATH STATISTICS ---\n")
     log_file.write("Total Turns: " + str(len([t for _, _, t in movement_log if t is not None])) + "\n")
-    log_file.write("Horizontal Distance: " + str(h_dist) + " units\n")
-    log_file.write("Vertical Distance: " + str(v_dist) + " units\n")
-    log_file.write("Manhattan Distance: " + str(manhattan_dist) + " units\n")
+    log_file.write("Horizontal Distance: " + "{:.2f}".format(h_dist) + " units\n")
+    log_file.write("Vertical Distance: " + "{:.2f}".format(v_dist) + " units\n")
+    log_file.write("Manhattan Distance: " + "{:.2f}".format(manhattan_dist) + " units\n")
 
 upload_submission()
